@@ -1,0 +1,23 @@
+@import './variable.scss';
+
+@each $tag, $color in $colors {
+    .#{$tag}{
+        .main-text{
+            &::before{
+              background-color: $color;
+            }
+        }
+        .sub-text{
+          &::before{
+              border: solid 1px $color;  
+            }
+        }
+    }
+    .sub-headline{
+      .#{$tag}{
+        &::before{
+          background-color: $color;
+        }
+      }
+    }
+}
