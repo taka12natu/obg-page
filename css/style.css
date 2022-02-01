@@ -1,3 +1,10 @@
+@charset "UTF-8";
+/* 各テキスト前の装飾の色設定 */
+.color_1 {
+  /* 太字テキスト部分 */
+  /* 細字テキスト部分 */
+}
+
 .color_1 .main-text::before {
   background-color: #1a2d78;
 }
@@ -6,8 +13,14 @@
   border: solid 1px #1a2d78;
 }
 
+/* 理念の下の各テキストの点 */
 .sub-headline .color_1::before {
   background-color: #1a2d78;
+}
+
+.color_2 {
+  /* 太字テキスト部分 */
+  /* 細字テキスト部分 */
 }
 
 .color_2 .main-text::before {
@@ -18,8 +31,14 @@
   border: solid 1px #215295;
 }
 
+/* 理念の下の各テキストの点 */
 .sub-headline .color_2::before {
   background-color: #215295;
+}
+
+.color_3 {
+  /* 太字テキスト部分 */
+  /* 細字テキスト部分 */
 }
 
 .color_3 .main-text::before {
@@ -30,8 +49,14 @@
   border: solid 1px #1c83c8;
 }
 
+/* 理念の下の各テキストの点 */
 .sub-headline .color_3::before {
   background-color: #1c83c8;
+}
+
+.color_4 {
+  /* 太字テキスト部分 */
+  /* 細字テキスト部分 */
 }
 
 .color_4 .main-text::before {
@@ -42,14 +67,32 @@
   border: solid 1px #ff007d;
 }
 
+/* 理念の下の各テキストの点 */
 .sub-headline .color_4::before {
   background-color: #ff007d;
 }
 
+/* ブレークポイントの設定 */
+/* フォントサイズをremで設定しやすいようにする */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  /* rem設定用 */
+  font-size: 62.5%;
+}
+
+@media only screen and (max-width: 768px) {
+  html {
+    font-size: 50%;
+  }
+}
+
+ul {
+  list-style: none;
 }
 
 .main {
@@ -71,14 +114,21 @@
 }
 
 .headline {
-  font-size: 30px;
+  font-size: 3rem;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
-img {
-  width: 70%;
-  height: auto;
+@media only screen and (max-width: 599px) {
+  .headline {
+    margin-top: 20px;
+  }
+}
+
+@media only screen and (max-width: 599px) {
+  .sub-headline {
+    text-align: center;
+  }
 }
 
 .contents {
@@ -86,12 +136,42 @@ img {
   margin-bottom: 100px;
 }
 
+@media only screen and (max-width: 599px) {
+  .contents {
+    display: block;
+  }
+}
+
 .text-box {
   width: 50%;
 }
 
+@media only screen and (max-width: 599px) {
+  .text-box {
+    width: 100%;
+  }
+}
+
 .img-box {
   width: 50%;
+}
+
+@media only screen and (max-width: 599px) {
+  .img-box {
+    width: 100%;
+  }
+}
+
+img {
+  width: 70%;
+  height: auto;
+}
+
+@media only screen and (max-width: 599px) {
+  img {
+    width: 90%;
+    margin-left: 5%;
+  }
 }
 
 .content_1 .text-box
@@ -99,62 +179,71 @@ img {
   color: #1a2d78;
 }
 
-.content_3 .img-box {
+.content_3 .img-box, .content_5 .img-box {
   order: 2;
   text-align: right;
 }
 
-.content_5 .img-box {
-  order: 2;
-  text-align: right;
+@media only screen and (max-width: 599px) {
+  .content_3 .img-box, .content_5 .img-box {
+    text-align: center;
+  }
 }
 
 .main-text {
-  font-size: 22px;
+  font-size: 2.2rem;
   font-weight: bold;
   margin-top: 20px;
   padding: 10px 0;
 }
 
 .sub-text {
-  margin: 10px 0 20px 0;
-  padding: 10px 0;
-  font-size: 16px;
+  margin-bottom: 20px;
+  font-size: 1.6rem;
 }
 
-ul {
-  list-style: none;
+.main-text, .sub-text, .head-text {
+  display: flex;
+  align-items: center;
 }
 
-p {
-  position: relative;
-}
-
-p::before {
+.main-text::before, .sub-text::before, .head-text::before {
   content: "";
-  display: inline-block;
-  position: absolute;
-  top: 50%;
-  left: -25px;
-  margin-top: -25px;
-  width: 15px;
-  height: 45px;
+  margin-top: 5px;
+  margin-right: 10px;
+  padding: 30px 10px;
+}
+
+@media only screen and (max-width: 599px) {
+  .main-text::before, .sub-text::before, .head-text::before {
+    color: #ff007d;
+  }
 }
 
 .headline .color_4::before {
   background-color: #ff007d;
-  left: -30px;
+  margin-right: 20px;
 }
 
 .sub-headline .main-text::before {
   content: "";
-  display: inline-block;
-  position: absolute;
   border-radius: 50%;
-  top: 50%;
-  left: -30px;
-  margin-top: -12px;
-  width: 22px;
-  height: 22px;
+  margin-top: 5px;
+  margin-right: 10px;
+  padding: 10px 10px;
+}
+
+.sub-headline .sub-text {
+  margin-left: 15px;
+}
+
+.sub-headline .sub-text::before {
+  content: none;
+}
+
+@media only screen and (max-width: 599px) {
+  .sub-headline p {
+    justify-content: center;
+  }
 }
 /*# sourceMappingURL=style.css.map */

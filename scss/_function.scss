@@ -1,18 +1,22 @@
 @import './variable.scss';
 
+/* 各テキスト前の装飾の色設定 */
 @each $tag, $color in $colors {
     .#{$tag}{
+      /* 太字テキスト部分 */
         .main-text{
             &::before{
               background-color: $color;
             }
         }
+        /* 細字テキスト部分 */
         .sub-text{
           &::before{
               border: solid 1px $color;  
             }
         }
     }
+    /* 理念の下の各テキストの点 */
     .sub-headline{
       .#{$tag}{
         &::before{
@@ -20,4 +24,16 @@
         }
       }
     }
+}
+
+/* ブレークポイントの設定 */
+@mixin media($breakpoint){
+  @media #{map-get($breakpoints,$breakpoint)}{
+      @content;
+  }
+}
+
+/* フォントサイズをremで設定しやすいようにする */
+@mixin rem($size: 16) {
+  font-size: ($size / 10) + rem;
 }

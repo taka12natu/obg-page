@@ -7,6 +7,16 @@
     padding: 0;
     box-sizing: border-box;
 }
+html {
+    /* rem設定用 */
+    font-size: 62.5%;
+    @include media(md){
+        font-size: 50%;
+    }
+}
+ul{
+    list-style: none;
+}
 .main{
     width: 90%;
     height: auto;
@@ -23,23 +33,44 @@
     background-color: blue;
 }
 .headline{
-    font-size: $heading-text;
+    @include rem($heading-text);
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    @include media(sm){
+        margin-top: 20px;
+    }
 }
-img{
-    width: 70%;
-    height: auto;
+.sub-headline{
+    @include media(sm){
+        text-align: center;
+    }
 }
 .contents{
     display: flex;
     margin-bottom: 100px;
+    @include media(sm){
+      display: block;
+    }
 }
 .text-box {
     width: 50%;
+    @include media(sm){
+        width: 100%;
+    }
 }
 .img-box {
     width: 50%;
+    @include media(sm){
+        width: 100%;
+    }
+}
+img{
+    width: 70%;
+    height: auto;
+    @include media(sm){
+        width: 90%;
+        margin-left: 5%;
+    }
 }
 .content_1{
     .text-box
@@ -47,63 +78,63 @@ img{
             color: #1a2d78,
     }
 }
-.content_3{
+.content_3, .content_5{
     .img-box{
         order: 2;
         text-align: right;
-    }
-}
-.content_5{
-    .img-box{
-        order: 2;
-        text-align: right;
+        @include media(sm){
+            text-align: center;
+        }
     }
 }
 .main-text{
-    font-size: $main-text;
+    @include rem($main-text);
     font-weight: bold;
     margin-top: 20px;
     padding: 10px 0;
 }
 .sub-text{
-    margin: 10px 0 20px 0;
-    padding: 10px 0;
-    font-size: $sub-text;
+    margin-bottom: 20px;
+    @include rem($sub-text);
 }
-ul{
-    list-style: none;
-}
-p{
-    position: relative;
+.main-text, .sub-text, .head-text{
+    display: flex;
+    align-items: center;
     &::before {
         content: "";
-        display: inline-block;
-        position: absolute;
-        top: 50%;
-        left: -25px;
-        margin-top: -25px;
-	    width: 15px;
-	    height: 45px;
+        margin-top: 5px;
+        margin-right: 10px;
+	    padding: 30px 10px;
+        @include media(sm){
+            color: #ff007d;
+        }
     }
 }
 .headline{
     .color_4::before{
         background-color: #ff007d;
-        left: -30px;
+        margin-right: 20px;
     }
 }
-.sub-headline{
+.sub-headline{   
     .main-text{
         &::before{
             content: "";
-            display: inline-block;
-            position: absolute;
             border-radius: 50%;
-            top: 50%;
-            left: -30px;
-            margin-top: -12px;
-            width: 22px;
-            height: 22px;
+            margin-top: 5px;
+            margin-right: 10px;
+            padding: 10px 10px;
+        }
+    }
+    .sub-text{
+        margin-left: 15px;
+        &::before{
+            content: none;
+        }
+    }
+    p{
+        @include media(sm){
+            justify-content: center;
         }
     }
 }

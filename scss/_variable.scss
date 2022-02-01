@@ -1,6 +1,6 @@
-$sub-text: 16px;
-$main-text: 22px;
-$heading-text: 30px;
+$sub-text: 16;
+$main-text: 22;
+$heading-text: 30;
 
 $colors:(
     color_1: #1a2d78, 
@@ -8,3 +8,8 @@ $colors:(
     color_3: #1c83c8, 
     color_4: #ff007d
 ) ;
+
+$breakpoints:(
+    sm :"only screen and (max-width:599px)",
+    md :"only screen and (max-width:768px)",
+);
